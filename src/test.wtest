@@ -1,0 +1,78 @@
+import carpas.*
+import jarras.*
+import personas.*
+import Marcas.*
+
+describe "birrita" {
+	
+	var carpa1 = new Carpa()
+	
+	
+	var jarra = new Jarra()
+	var jarra2 = new Jarra()
+	var jarra3 = new Jarra()
+	
+	
+	var aleman= new PersonaAlemana()
+	
+	
+	var corona= new MarcaDeCervezasRubias()
+	
+	
+	fixture {
+
+	
+	//Test 1
+	corona.graduacion(8)
+	jarra.marca(corona)
+	jarra.capacidadEnLitros(0.5)
+	
+	
+	//Test2
+	
+	aleman.jarrasDeCervezaCompradas([jarra, jarra2, jarra3])
+	jarra2.capacidadEnLitros(1)
+	jarra2.marca(corona)
+	jarra3.capacidadEnLitros(3)
+	jarra3.marca(corona)
+	
+	
+	//Test3
+	
+	aleman.nivelDeAguante(10)
+	aleman.peso(40)
+	
+ }
+ 
+ test "test1"{
+ 	
+ 	
+
+ 	assert.equals(0.04, jarra.alcoholEnJarra())
+ 	
+ 	
+ }
+ 
+ test "test2"{
+ 	
+ 	assert.equals(0.36, aleman.cantAlcohol())
+ 	
+ }
+ 
+ test"test 3"{
+ 	
+ 	assert.equals(true, aleman.estaEbrio())
+ 	
+ 	
+ }
+ 
+ 
+ test "test 4"{
+ 	
+ 	
+ 	
+ 	
+ 	
+ }
+	
+}

@@ -2,22 +2,28 @@ class Persona {
 	
 	var property peso=0
 	var property jarrasDeCervezaCompradas= []
-	var property escuchaMusicaTradicional
+	var property escuchaMusicaTradicional = false //Tiene que arrancar en falso
 	var property nivelDeAguante =0
 	
 	///////Le pasas una marca y te dice si le gusta o no
 	method estaEbrio() {
 		
 		
-		 return jarrasDeCervezaCompradas.capacidadEnLitros().sum() * peso > nivelDeAguante
-		
+		 return jarrasDeCervezaCompradas.sum{jarra => jarra.alcoholEnJarra()} * peso > nivelDeAguante
+		// jarrasDeCervezaCompradas.alcoholEnJarra().sum()
 	}
 		
 	method cantAlcohol() {	
-		return jarrasDeCervezaCompradas.sum{jarra => jarra.capacidadEnLitros()}
+		return jarrasDeCervezaCompradas.sum{jarra => jarra.alcoholEnJarra()}
 		
 		
 	}	
+	
+	method quiereEntrar() {
+		
+		
+		
+	}
 
 }
 
@@ -25,7 +31,7 @@ class PersonaBelga inherits Persona {
 	
 	const property paisOrigen= "Belgica"
 	
-	method cervezasQueLesGusta(cerveza) {} //Despues lo veo
+	method cervezaQueLesGusta(cerveza) = cerveza.gramosDeLupuloPorLitro() > 4 //Despues lo veo
 		
 	
 }
@@ -43,7 +49,7 @@ class PersonaCheca inherits Persona {
 	
 	const property paisOrigen= "Republica Checa"
 	
-	method cervezasQueLesGusta(cerveza) {}//Despues lo veo}
+	method cervezasQueLesGusta(cerveza) = cerveza.graduacion() > 8//Despues lo veo}
 		
 	
 }
