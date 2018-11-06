@@ -6,6 +6,7 @@ import Marcas.*
 describe "birrita" {
 	
 	var carpa1 = new Carpa()
+	var carpa2 = new Carpa()
 	
 	
 	var jarra = new Jarra()
@@ -15,8 +16,11 @@ describe "birrita" {
 	
 	var aleman= new PersonaAlemana()
 	
+	var belga = new PersonaBelga()
+	
 	
 	var corona= new MarcaDeCervezasRubias()
+	var heineken = new MarcaDeCervezasRubias()
 	
 	
 	fixture {
@@ -41,6 +45,24 @@ describe "birrita" {
 	
 	aleman.nivelDeAguante(10)
 	aleman.peso(40)
+	
+	//Test 4
+	carpa1.marcaDeLaCervezaQueVende(corona)
+	corona.paisDeOrigen("Belgica")
+	carpa1.bandaDeMusica(true)
+	belga.escuchaMusicaTradicional(true)
+	
+	//Test 4 bis
+	carpa2.personasEnLaCarpa(4)
+	carpa2.limiteDeGente(10)
+	carpa2.marcaDeLaCervezaQueVende(heineken)
+	carpa2.bandaDeMusica(true)
+	heineken.paisDeOrigen("Alemania")
+	aleman.escuchaMusicaTradicional(true)
+	
+	//Test 5
+	carpa1.limiteDeGente(5)
+	carpa1.personasEnLaCarpa(4)
 	
  }
  
@@ -69,10 +91,22 @@ describe "birrita" {
  
  test "test 4"{
  	
- 	
- 	
+ 	assert.equals(true, belga.quiereEntrar(carpa1))
  	
  	
  }
+	test "test 4 bis"	{
+		
+		
+		assert.equals(true, aleman.quiereEntrar(carpa2))
+		
+	}
 	
+	
+ test "test 5"{
+ 	
+ 	assert.equals(true, carpa1.dejaIngresar(aleman))
+ 	
+ 	
+ }
 }
